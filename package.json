@@ -1,0 +1,15 @@
+{
+  "name": "com.farlenkov.game-loop",
+  "displayName": "GAME / LOOP",
+  "version": "1.0.0",
+  "unity": "2020.3",
+  "description": "Game Loop",
+  "keywords": [
+    ""
+  ],
+  "type": "library",
+  "author": {
+    "name": "Mike Farlenkov",
+    "url": "https://farlenkov.com"
+  }
+}
