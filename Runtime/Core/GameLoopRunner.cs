@@ -19,7 +19,7 @@ namespace Farlenkov
             Call(0, Loop.Start);
         }
 
-        void Update()
+        protected virtual void Update()
         {
             Call(Time.deltaTime, Loop.Update);
         }
@@ -39,7 +39,7 @@ namespace Farlenkov
             Call(Time.time, Loop.Destroy);
         }
 
-        void Call(float dt, GameLoopFuncList funcs)
+        protected void Call(float dt, GameLoopFuncList funcs)
         {
             var time = Time.time;
             var count = funcs.Count;
