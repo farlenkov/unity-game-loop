@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
-namespace Farlenkov
+namespace UnityGameLoop
 {
     public class GameLoop
     {

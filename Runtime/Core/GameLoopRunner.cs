@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Farlenkov
+namespace UnityGameLoop
 {
     public abstract class GameLoopRunner : MonoBehaviour
     {

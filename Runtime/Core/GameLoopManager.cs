@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Farlenkov
+namespace UnityGameLoop
 {
     public abstract class GameLoopManager<LOOP>
         where LOOP : GameLoop

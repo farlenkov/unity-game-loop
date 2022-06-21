@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
-namespace Farlenkov
+namespace UnityGameLoop
 {
     public abstract partial class GameLoopSystem<LOOP> : SystemBase
         where LOOP : GameLoop
