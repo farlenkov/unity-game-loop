@@ -16,11 +16,14 @@ namespace UnityGameLoop
 
     public class GameLoopFuncList : List<GameLoopFunc>
     {
-        public void Add(Action<float> callback)
+        public void Add(
+            Action<float> callback, 
+            float interval = 0)
         {
             Add(new GameLoopFunc()
             {
-                Exec = callback
+                Exec = callback,
+                Interval = interval
             });
         }
     }
