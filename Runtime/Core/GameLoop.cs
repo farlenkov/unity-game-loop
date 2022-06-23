@@ -25,7 +25,8 @@ namespace UnityGameLoop
 
         public Coroutine StartCoroutine(IEnumerator routine) => LoopRunner.StartCoroutine(routine);
         public void StopCoroutine(Coroutine routine) => LoopRunner.StopCoroutine(routine);
-               
+
+        public Transform RootTransform => LoopRunner.transform;
         GameLoopRunner LoopRunner;
 
         public GameLoop(GameLoopRunner loopRunner)
