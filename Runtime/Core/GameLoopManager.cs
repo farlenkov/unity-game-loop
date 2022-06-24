@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Entities;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -32,5 +33,7 @@ namespace UnityGameLoop
 
         public Coroutine StartCoroutine(IEnumerator routine) => Loop.StartCoroutine(routine);
         public void StopCoroutine(Coroutine routine) => Loop.StopCoroutine(routine);
+
+        public EntityManager EntityManager => Loop.EntityManager;
     }
 }
