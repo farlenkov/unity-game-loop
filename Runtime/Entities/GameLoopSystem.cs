@@ -13,6 +13,12 @@ namespace UnityGameLoop
         protected float ElapsedTime { get; private set; }
         public new bool Enabled = true;
 
+        // HELPERS
+
+        public GameObject Instantiate(GameObject original) => Object.Instantiate(original);
+        public Object Instantiate(Object original) => Object.Instantiate(original);
+        public void DestroyObject(Object original) => Object.Destroy(original);
+
         // INIT
 
         public void Init(LOOP loop)
@@ -67,11 +73,5 @@ namespace UnityGameLoop
             if (Loop.World.IsCreated)
                 Loop.World.DestroySystem(this);
         }
-
-        // HELPERS
-
-        public GameObject Instantiate(GameObject original) => Object.Instantiate(original);
-        public Object Instantiate(Object original) => Object.Instantiate(original);
-        public void DestroyObject(Object original) => Object.Destroy(original);
     }
 }
