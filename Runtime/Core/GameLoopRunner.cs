@@ -34,6 +34,11 @@ namespace UnityGameLoop
             Call(Time.deltaTime, Loop.LateUpdate);
         }
 
+        void OnDrawGizmos()
+        {
+            Call(Time.deltaTime, Loop.DrawGizmos);
+        }
+
         void OnDestroy()
         {
             Call(Time.time, Loop.Destroy);

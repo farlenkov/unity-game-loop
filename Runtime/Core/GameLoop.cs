@@ -14,6 +14,7 @@ namespace UnityGameLoop
         public GameLoopFuncList Update { get; private set; }
         public GameLoopFuncList FixedUpdate { get; private set; }
         public GameLoopFuncList LateUpdate { get; private set; }
+        public GameLoopFuncList DrawGizmos { get; private set; }
         public GameLoopFuncList Destroy { get; private set; }
 
         //ECS
@@ -38,6 +39,7 @@ namespace UnityGameLoop
             Update = new GameLoopFuncList();
             FixedUpdate = new GameLoopFuncList();
             LateUpdate = new GameLoopFuncList();
+            DrawGizmos = new GameLoopFuncList();
             Destroy = new GameLoopFuncList();
         }
     }
