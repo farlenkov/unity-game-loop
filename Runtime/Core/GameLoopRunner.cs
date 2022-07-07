@@ -44,6 +44,11 @@ namespace UnityGameLoop
             Call(Time.time, Loop.Destroy);
         }
 
+        void OnApplicationQuit()
+        {
+            Call(Time.time, Loop.Quit);
+        }
+
         protected void Call(float dt, GameLoopFuncList funcs)
         {
             var time = Time.time;
