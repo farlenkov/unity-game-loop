@@ -31,9 +31,6 @@ namespace UnityGameLoop
         public Object Instantiate(Object original) => Object.Instantiate(original);
         public void DestroyObject(Object original) => Object.Destroy(original);
 
-        public Coroutine StartCoroutine(IEnumerator routine) => Loop.StartCoroutine(routine);
-        public void StopCoroutine(Coroutine routine) => Loop.StopCoroutine(routine);
-
         public EntityManager EntityManager => Loop.EntityManager;
     }
 }

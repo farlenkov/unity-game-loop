@@ -23,10 +23,7 @@ namespace UnityGameLoop
         public World World;
         public EntityManager EntityManager => World.EntityManager;
 
-        // HELPERS
-
-        public Coroutine StartCoroutine(IEnumerator routine) => LoopRunner.StartCoroutine(routine);
-        public void StopCoroutine(Coroutine routine) => LoopRunner.StopCoroutine(routine);
+        // RUNNER
 
         public Transform RootTransform => LoopRunner.transform;
         GameLoopRunner LoopRunner;
