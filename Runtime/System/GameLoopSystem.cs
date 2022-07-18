@@ -21,6 +21,8 @@ namespace UnityGameLoop
 
         // INIT
 
+        protected virtual GameLoopFuncList UpdateList => Loop.Update;
+
         public void Init(LOOP loop)
         {
             Loop = loop;
@@ -28,15 +30,18 @@ namespace UnityGameLoop
             if (Enabled)
             {
                 Loop.World.AddSystem(this);
-                Init();
+
+                Loop.Start.Add(Start);
+                UpdateList.Add(Update);
+                Loop.Destroy.Add(Destroy);
+
+                OnInit();
             }
         }
 
-        protected virtual void Init()
+        protected virtual void OnInit()
         {
-            Loop.Start.Add(Start);
-            Loop.Update.Add(Update);
-            Loop.Destroy.Add(Destroy);
+            
         }
 
         // START
@@ -53,7 +58,7 @@ namespace UnityGameLoop
 
         // UPDATE
 
-        protected void Update(float dt)
+        void Update(float dt)
         {
             DeltaTime = dt;
             ElapsedTime = UnityEngine.Time.time;
@@ -68,7 +73,7 @@ namespace UnityGameLoop
 
         // DESTROY
 
-        protected virtual void Destroy(float dt)
+        void Destroy(float dt)
         {
             if (Loop.World.IsCreated)
                 Loop.World.DestroySystem(this);
