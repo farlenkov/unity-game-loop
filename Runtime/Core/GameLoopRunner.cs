@@ -36,7 +36,8 @@ namespace UnityGameLoop
 
         void OnDrawGizmos()
         {
-            Call(Time.deltaTime, Loop.DrawGizmos);
+            if(Loop != null)
+                Call(Time.deltaTime, Loop.DrawGizmos);
         }
 
         void OnDestroy()
