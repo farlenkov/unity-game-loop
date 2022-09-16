@@ -48,6 +48,9 @@ namespace UnityGameLoop
 
         void Start(float dt)
         {
+            DeltaTime = dt;
+            ElapsedTime = UnityEngine.Time.time;
+
             OnStart();
         }
 
