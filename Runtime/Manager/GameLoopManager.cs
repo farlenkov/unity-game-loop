@@ -11,6 +11,7 @@ namespace UnityGameLoop
         where LOOP : GameLoop
     {
         protected LOOP Loop;
+        protected float ElapsedTime => UnityEngine.Time.time;
         public bool Enabled = true;
 
         protected abstract void Init();
