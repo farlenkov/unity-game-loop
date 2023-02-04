@@ -67,7 +67,14 @@ namespace UnityGameLoop
             DeltaTime = dt;
             ElapsedTime = UnityEngine.Time.time;
 
-            Update();
+            try
+            {
+                Update();
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogException(ex);
+            }
         }
 
         protected override void OnUpdate()
