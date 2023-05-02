@@ -25,12 +25,11 @@ namespace UnityGameLoop
 
         // RUNNER
 
-        public Transform RootTransform => LoopRunner.transform;
-        GameLoopRunner LoopRunner;
+        public Transform RootTransform { get; private set; }
 
-        public GameLoop(GameLoopRunner loopRunner)
+        public GameLoop(Transform rootTransform)
         {
-            LoopRunner = loopRunner;
+            RootTransform = rootTransform;
             World = new World(GetType().Name);
 
             Start = new GameLoopFuncList();
