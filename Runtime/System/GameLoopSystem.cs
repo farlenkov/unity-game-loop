@@ -13,6 +13,8 @@ namespace UnityGameLoop
         protected float ElapsedTime { get; private set; }
         public new bool Enabled = true;
 
+        protected virtual bool NeedUpdate => true;
+
         // HELPERS
 
         public GameObject Instantiate(GameObject original) => Object.Instantiate(original);
@@ -66,6 +68,9 @@ namespace UnityGameLoop
         {
             DeltaTime = dt;
             ElapsedTime = UnityEngine.Time.time;
+
+            if (!NeedUpdate)
+                return;
 
             try
             {
