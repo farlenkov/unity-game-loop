@@ -10,6 +10,7 @@ namespace UnityGameLoop
     {
         protected LOOP Loop;
         protected float DeltaTime { get; private set; }
+        protected float FixedDeltaTime { get; private set; }
         protected float ElapsedTime { get; private set; }
         public new bool Enabled = true;
 
@@ -51,6 +52,7 @@ namespace UnityGameLoop
         void Start(float dt)
         {
             DeltaTime = dt;
+            FixedDeltaTime = UnityEngine.Time.fixedDeltaTime;
             ElapsedTime = UnityEngine.Time.time;
 
             OnStart();
@@ -66,6 +68,7 @@ namespace UnityGameLoop
         void Update(float dt)
         {
             DeltaTime = dt;
+            FixedDeltaTime = UnityEngine.Time.fixedDeltaTime;
             ElapsedTime = UnityEngine.Time.time;
 
             if (!NeedUpdate)
