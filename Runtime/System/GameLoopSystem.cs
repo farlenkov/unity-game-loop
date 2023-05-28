@@ -11,6 +11,7 @@ namespace UnityGameLoop
         protected LOOP Loop;
         protected float DeltaTime { get; private set; }
         protected float FixedDeltaTime { get; private set; }
+        protected float UnscaledDeltaTime { get; private set; }
         protected float ElapsedTime { get; private set; }
         public new bool Enabled = true;
 
@@ -49,12 +50,9 @@ namespace UnityGameLoop
 
         // START
 
-        void Start(float dt)
+        void Start(float deltaTime)
         {
-            DeltaTime = dt;
-            FixedDeltaTime = UnityEngine.Time.fixedDeltaTime;
-            ElapsedTime = UnityEngine.Time.time;
-
+            UpdateTime(deltaTime);
             OnStart();
         }
 
@@ -65,11 +63,17 @@ namespace UnityGameLoop
 
         // UPDATE
 
-        void Update(float dt)
+        void UpdateTime(float deltaTime)
         {
-            DeltaTime = dt;
-            FixedDeltaTime = UnityEngine.Time.fixedDeltaTime;
+            DeltaTime = deltaTime;
             ElapsedTime = UnityEngine.Time.time;
+            FixedDeltaTime = UnityEngine.Time.fixedDeltaTime;
+            UnscaledDeltaTime = UnityEngine.Time.unscaledDeltaTime;
+        }
+
+        void Update(float deltaTime)
+        {
+            UpdateTime(deltaTime);
 
             if (!NeedUpdate)
                 return;
