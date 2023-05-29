@@ -14,14 +14,17 @@ namespace UnityGameLoop
         protected float ElapsedTime => UnityEngine.Time.time;
         public bool Enabled = true;
 
-        protected abstract void Init();
-
         public void Init(LOOP loop)
         {
             Loop = loop;
 
             if (Enabled)
-                Init();
+                OnInit();
+        }
+
+        protected virtual void OnInit()
+        {
+
         }
 
         // HELPERS
