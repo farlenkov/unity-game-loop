@@ -33,8 +33,6 @@ namespace UnityGameLoop
 
             if (Enabled)
             {
-                Loop.World.AddSystem(this);
-
                 Loop.Start.Add(Start);
                 UpdateList.Add(Update);
                 Loop.Destroy.Add(Destroy);
@@ -98,7 +96,7 @@ namespace UnityGameLoop
         void Destroy(float dt)
         {
             if (Loop.World.IsCreated)
-                Loop.World.DestroySystem(this);
+                Loop.World.DestroySystem(SystemHandle);
         }
     }
 }

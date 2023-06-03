@@ -50,6 +50,13 @@ namespace UnityGameLoop
             Call(Time.time, Loop.Quit);
         }
 
+        protected T CreateSystem<T> () where T : GameLoopSystem<LOOP>, new()
+        {
+            var system = Loop.World.CreateSystemManaged<T>();
+            system.Init(Loop);
+            return system;
+        }
+
         protected void Call(float dt, GameLoopFuncList funcs)
         {
             var time = Time.time;
