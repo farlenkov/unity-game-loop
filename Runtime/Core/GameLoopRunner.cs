@@ -58,7 +58,7 @@ namespace UnityGameLoop
             return system;
         }
 
-        protected T CreateSystem<T> () where T : GameLoopManager, new()
+        protected T CreateManager<T> () where T : GameLoopManager, new()
         {
             var system = new T();
             return system;
