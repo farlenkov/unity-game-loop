@@ -9,6 +9,7 @@ namespace UnityGameLoop
         where LOOP : GameLoop
     {
         protected LOOP Loop;
+        protected int FrameCount { get; private set; }
         protected float DeltaTime { get; private set; }
         protected float FixedDeltaTime { get; private set; }
         protected float UnscaledDeltaTime { get; private set; }
@@ -64,6 +65,7 @@ namespace UnityGameLoop
         void UpdateTime(float deltaTime)
         {
             DeltaTime = deltaTime;
+            FrameCount = UnityEngine.Time.frameCount;
             ElapsedTime = UnityEngine.Time.time;
             FixedDeltaTime = UnityEngine.Time.fixedDeltaTime;
             UnscaledDeltaTime = UnityEngine.Time.unscaledDeltaTime;
