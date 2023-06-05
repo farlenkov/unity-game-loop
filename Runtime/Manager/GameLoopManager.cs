@@ -7,7 +7,12 @@ using Object = UnityEngine.Object;
 
 namespace UnityGameLoop
 {
-    public abstract class GameLoopManager<LOOP>
+    public abstract class GameLoopManager
+    {
+
+    }
+
+    public abstract class GameLoopManager<LOOP> : GameLoopManager
         where LOOP : GameLoop
     {
         protected LOOP Loop;

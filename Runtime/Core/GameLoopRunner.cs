@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Entities;
 using UnityEngine;
 
 namespace UnityGameLoop
@@ -50,10 +52,15 @@ namespace UnityGameLoop
             Call(Time.time, Loop.Quit);
         }
 
-        protected T CreateSystem<T> () where T : GameLoopSystem<LOOP>, new()
+        protected T CreateSystem<T> () where T : SystemBase, new()
         {
             var system = Loop.World.CreateSystemManaged<T>();
-            system.Init(Loop);
+            return system;
+        }
+
+        protected T CreateSystem<T> () where T : GameLoopManager, new()
+        {
+            var system = new T();
             return system;
         }
 
