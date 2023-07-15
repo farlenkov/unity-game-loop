@@ -1,6 +1,6 @@
 {
-    "name": "Game.Loop.Runtime",
-    "rootNamespace": "",
+    "name": "UnityGameLoop.Runtime",
+    "rootNamespace": "UnityGameLoop",
     "references": [
         "GUID:734d92eba21c94caba915361bd5ac177"
     ],
