@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Entities;
 using UnityEngine;
 
 namespace UnityGameLoop
@@ -36,7 +37,7 @@ namespace UnityGameLoop
 
         void OnDrawGizmos()
         {
-            if(Loop != null)
+            if (Loop != null)
                 Call(Time.deltaTime, Loop.DrawGizmos);
         }
 
@@ -48,6 +49,18 @@ namespace UnityGameLoop
         void OnApplicationQuit()
         {
             Call(Time.time, Loop.Quit);
+        }
+
+        protected T CreateSystem<T>() where T : SystemBase, new()
+        {
+            var system = Loop.World.CreateSystem<T>();
+            return system;
+        }
+
+        protected T CreateManager<T>() where T : GameLoopManager, new()
+        {
+            var system = new T();
+            return system;
         }
 
         protected void Call(float dt, GameLoopFuncList funcs)

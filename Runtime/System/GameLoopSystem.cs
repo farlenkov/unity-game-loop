@@ -33,7 +33,8 @@ namespace UnityGameLoop
 
             if (Enabled)
             {
-                Loop.World.AddSystem(this);
+                if (!Loop.World.Systems.Contains(this))
+                    Loop.World.AddSystem(this);
 
                 Loop.Start.Add(Start);
                 UpdateList.Add(Update);
@@ -45,7 +46,7 @@ namespace UnityGameLoop
 
         protected virtual void OnInit()
         {
-            
+
         }
 
         // START
