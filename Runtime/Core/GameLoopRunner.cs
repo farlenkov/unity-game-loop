@@ -53,8 +53,11 @@ namespace UnityGameLoop
 
         protected T CreateSystem<T>() where T : SystemBase, new()
         {
-            var system = Loop.World.CreateSystem<T>();
-            return system;
+#if UNITY_2022_3_OR_NEWER
+            return Loop.World.CreateSystemManaged<T>();
+#else
+            return Loop.World.CreateSystem<T>();
+#endif
         }
 
         protected T CreateManager<T>() where T : GameLoopManager, new()

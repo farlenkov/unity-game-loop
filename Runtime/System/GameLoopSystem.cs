@@ -33,9 +33,6 @@ namespace UnityGameLoop
 
             if (Enabled)
             {
-                if (!Loop.World.Systems.Contains(this))
-                    Loop.World.AddSystem(this);
-
                 Loop.Start.Add(Start);
                 UpdateList.Add(Update);
                 Loop.Destroy.Add(Destroy);
@@ -99,7 +96,13 @@ namespace UnityGameLoop
         void Destroy(float dt)
         {
             if (Loop.World.IsCreated)
+            {
+#if UNITY_2022_3_OR_NEWER
+                Loop.World.DestroySystemManaged(this);
+#else
                 Loop.World.DestroySystem(this);
+#endif
+            }
         }
     }
 }
