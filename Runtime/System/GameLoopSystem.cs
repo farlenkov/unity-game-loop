@@ -13,6 +13,7 @@ namespace UnityGameLoop
         protected float FixedDeltaTime { get; private set; }
         protected float UnscaledDeltaTime { get; private set; }
         protected float ElapsedTime { get; private set; }
+        protected int FrameCount { get; private set; }
         public new bool Enabled = true;
 
         protected virtual bool NeedUpdate => true;
@@ -67,6 +68,7 @@ namespace UnityGameLoop
             ElapsedTime = UnityEngine.Time.time;
             FixedDeltaTime = UnityEngine.Time.fixedDeltaTime;
             UnscaledDeltaTime = UnityEngine.Time.unscaledDeltaTime;
+            FrameCount = UnityEngine.Time.frameCount;
         }
 
         void Update(float deltaTime)
@@ -99,6 +101,7 @@ namespace UnityGameLoop
             {
 #if UNITY_2022_3_OR_NEWER
                 Loop.World.DestroySystemManaged(this);
+                // Loop.World.DestroySystem(SystemHandle);
 #else
                 Loop.World.DestroySystem(this);
 #endif
