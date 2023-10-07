@@ -21,6 +21,7 @@ namespace UnityGameLoop
         // HELPERS
 
         public GameObject Instantiate(GameObject original, Transform parent = null) => Object.Instantiate(original, parent);
+        public GameObject Instantiate(GameObject original, Vector3 pos, Quaternion rot) => Object.Instantiate(original, pos, rot);
         public T Instantiate<T>(T monoBehaviour, Transform parent = null) where T : Object => Object.Instantiate(monoBehaviour, parent);
         public void DestroyObject(Object original) => Object.Destroy(original);
 
