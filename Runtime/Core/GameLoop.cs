@@ -20,8 +20,8 @@ namespace UnityGameLoop
 
         //ECS
 
-        public World World;
-        public EntityManager EntityManager => World.EntityManager;
+        public World World { get; private set; }
+        public EntityManager EntityManager { get; private set; }
 
         // RUNNER
 
@@ -31,6 +31,7 @@ namespace UnityGameLoop
         {
             RootTransform = rootTransform;
             World = new World(GetType().Name);
+            EntityManager = World.EntityManager;
 
             Start = new GameLoopFuncList();
             Update = new GameLoopFuncList();
