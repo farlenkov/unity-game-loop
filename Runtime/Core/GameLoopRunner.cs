@@ -41,7 +41,7 @@ namespace UnityGameLoop
                 Call(Time.deltaTime, Loop.DrawGizmos);
         }
 
-        void OnDestroy()
+        protected virtual void OnDestroy()
         {
             Call(Time.time, Loop.Destroy);
         }
