@@ -25,11 +25,21 @@ namespace UnityGameLoop
 
         // RUNNER
 
-        public Transform RootTransform { get; private set; }
+        public Transform RootTransform { get; internal set; }
 
+        public GameLoop()
+        {
+            InitInternal();
+        }
+            
         public GameLoop(Transform rootTransform)
         {
             RootTransform = rootTransform;
+            InitInternal();
+        }
+
+        void InitInternal()
+        {
             World = new World(GetType().Name);
             EntityManager = World.EntityManager;
 

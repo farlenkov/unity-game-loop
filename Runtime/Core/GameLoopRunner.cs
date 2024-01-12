@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
+using UnityServiceRegistry;
 
 namespace UnityGameLoop
 {
@@ -11,9 +10,19 @@ namespace UnityGameLoop
     }
 
     public abstract class GameLoopRunner<LOOP> : GameLoopRunner
-        where LOOP : GameLoop
+        where LOOP : GameLoop, new()
     {
         protected LOOP Loop;
+        protected abstract void CreateSystems();
+
+        protected virtual void Awake()
+        {
+            Loop = new LOOP();
+            Loop.RootTransform = transform; 
+            ServiceRegistry.TryAddService(Loop.EntityManager);
+
+            CreateSystems();
+        }
 
         void Start()
         {
@@ -44,6 +53,7 @@ namespace UnityGameLoop
         protected virtual void OnDestroy()
         {
             Call(Time.time, Loop.Destroy);
+            ServiceRegistry.TryRemoveService(Loop.EntityManager);
         }
 
         void OnApplicationQuit()
