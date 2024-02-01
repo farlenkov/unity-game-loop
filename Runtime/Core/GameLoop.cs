@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace UnityGameLoop
 {
-    public class GameLoop
+    public class GameLoop : IDisposable
     {
         // FUNC LIST
 
@@ -50,6 +50,15 @@ namespace UnityGameLoop
             DrawGizmos = new GameLoopFuncList();
             Destroy = new GameLoopFuncList();
             Quit = new GameLoopFuncList();
+        }
+
+        public void Dispose()
+        {
+            if (World.IsCreated)
+            {
+                World.Dispose();
+                World = null;
+            }
         }
     }
 }

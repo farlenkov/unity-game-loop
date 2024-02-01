@@ -54,6 +54,7 @@ namespace UnityGameLoop
         {
             Call(Time.time, Loop.Destroy);
             ServiceRegistry.TryRemoveService(Loop.EntityManager);
+            Loop.Dispose();
         }
 
         void OnApplicationQuit()

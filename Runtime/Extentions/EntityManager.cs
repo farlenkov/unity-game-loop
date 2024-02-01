@@ -1,32 +1,22 @@
-using System;
 using Unity.Entities;
-using UnityEngine;
 
 namespace UnityGameLoop
 {
     public static class EntityManagerExt
     {
-        public static Entity SpawnObject<T>(
-            this EntityManager entityManager,
-            T objectComponent) where T : IComponentData
-        {
-            var entity = entityManager.CreateEntity();
-            entityManager.AddComponentObject(entity, objectComponent);
-            entityManager.AddComponentData(entity, new SpawnEvent());
-            return entity;
-        }
-
-        public static void DestroyObject(
-            this EntityManager entityManager,
-            Entity entity)
+        public static bool TryAddComponent<T>(
+            this EntityManager entityManager, 
+            Entity entity) 
+            where T : unmanaged, IComponentData
         {
             try
             {
-                entityManager.AddComponentData(entity, new DestroyEvent());
+                entityManager.AddComponentData(entity, new T());
+                return true;
             }
-            catch (Exception ex)
+            catch
             {
-
+                return false;
             }
         }
     }
