@@ -9,11 +9,9 @@ namespace UnityGameLoop
 {
     public sealed class EntityBehaviour : MonoBehaviour, IComponentData
     {
+        public EntityBehaviourMode Mode = EntityBehaviourMode.StartDestroy;
         public EntityManager EntityManager { get; private set; }
         public Entity Entity { get; private set; }
-        public EntityBehaviourMode Mode = EntityBehaviourMode.StartDestroy;
-
-        //static StringBuilder logBuilder = new StringBuilder();
 
         void Start()
         {
@@ -57,18 +55,15 @@ namespace UnityGameLoop
             Entity = entityManager.CreateEntity();
             entityManager.AddComponentData(Entity, new SpawnEvent());
 
-            var components = GetComponents<IEntityComponent>();
-            //logBuilder.AppendLine($"[EntityBehaviour] {gameObject.name}");
+            var entityComponents = GetComponents<IEntityComponent>();
 
-            for (var i = 0; i < components.Length; i++)
+            for (var i = 0; i < entityComponents.Length; i++)
             {
-                var component = components[i];
-                entityManager.AddComponentObject(Entity, component);
-                //logBuilder.AppendLine(component.ToString());
-            }
+                var entityComponent = entityComponents[i] as MonoBehaviour;
 
-            //Log.InfoEditor(logBuilder.ToString());
-            //logBuilder.Clear();
+                if (entityComponent.enabled)
+                    entityManager.AddComponentObject(Entity, entityComponent);
+            }
         }
 
         public void DestroyEntity()

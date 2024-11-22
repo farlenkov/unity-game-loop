@@ -15,17 +15,16 @@ namespace UnityGameLoop
         protected LOOP Loop;
         protected abstract void CreateSystems();
 
-        protected virtual void Awake()
+        void Awake()
         {
             Loop = new LOOP();
             Loop.RootTransform = transform; 
-            ServiceRegistry.TryAddService(Loop.EntityManager);
-
-            CreateSystems();
+            ServiceRegistry.TryAddService(Loop.EntityManager);            
         }
 
         void Start()
         {
+            CreateSystems();
             Call(0, Loop.Start);
         }
 

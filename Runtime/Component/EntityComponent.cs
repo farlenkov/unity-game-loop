@@ -16,6 +16,9 @@ namespace UnityGameLoop
         [field: SerializeField]
         public EntityBehaviour EntityBehaviour { get; private set; }
 
+        public Entity Entity => EntityBehaviour.Entity;
+        public EntityManager EntityManager => EntityBehaviour.EntityManager;
+
         protected virtual void OnValidate()
         {
             if (EntityBehaviour == null)
