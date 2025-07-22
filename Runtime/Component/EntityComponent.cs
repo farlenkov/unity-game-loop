@@ -12,6 +12,11 @@ namespace UnityGameLoop
     [RequireComponent(typeof(EntityBehaviour))]
     public abstract class EntityComponent : MonoBehaviour, IEntityComponent
     {
+        public EntityComponent()
+        {
+
+        }
+
         [field: ReadOnly]
         [field: SerializeField]
         public EntityBehaviour EntityBehaviour { get; private set; }
